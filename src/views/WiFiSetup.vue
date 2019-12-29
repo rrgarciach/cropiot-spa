@@ -1,0 +1,38 @@
+<template>
+  <div class="about">
+    <form>
+      <div class="form-group">
+        <label for="ssid">SSID:</label>
+        <div class="dropdown" id="ssid">
+          <button class="btn btn-block btn-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select WiFi Network
+          </button>
+          <div class="dropdown-menu w-100">
+            <a class="dropdown-item disabled" href="#">No networks were found.</a>
+          </div>
+          <input type="hidden">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pass">Password:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="pass" placeholder="Network password">
+          <div class="input-group-append">
+            <span class="input-group-text">show</span>
+          </div>
+        </div>
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <button type="submit" class="btn btn-block btn-success" id="wifi-submit">Submit</button>
+    </form>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'WiFiSetup',
+    beforeMount() {
+      this.$store.dispatch('wifi/fetchScanNetworks');
+    },
+  }
+</script>

@@ -1,4 +1,4 @@
-# cropiot-spa
+# CropIoT Single Page Application for embedded devices
 
 ## Project setup
 ```
