@@ -12,8 +12,16 @@
 </template>
 
 <script>
+  import {BCol, BRow, BFormGroup, BButton} from 'bootstrap-vue';
+
   export default {
     name: 'DeviceSetup',
+    components: {
+      BCol,
+      BRow,
+      BFormGroup,
+      BButton,
+    },
     data() {
       return {
         host: '',

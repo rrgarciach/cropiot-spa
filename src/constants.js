@@ -1,4 +1,4 @@
-export const API_HOST = process.env.NODE_ENV === 'production' ? '//192.168.4.1' : process.env.VUE_APP_API_HOST;
+export const API_HOST = process.env.NODE_ENV === 'production' ? '' : process.env.VUE_APP_API_HOST;
 export const API = {
   SETTINGS: {
     DEVICE: `${API_HOST}/api/settings/device`,

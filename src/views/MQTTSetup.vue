@@ -20,8 +20,19 @@
 </template>
 
 <script>
+  import {BCol, BRow, BFormGroup, BInputGroup, BFormInput, BBadge, BButton} from 'bootstrap-vue';
+
   export default {
     name: 'MQTTSetup',
+    components: {
+      BCol,
+      BRow,
+      BFormGroup,
+      BInputGroup,
+      BFormInput,
+      BBadge,
+      BButton,
+    },
     data() {
       return {
         host: '',

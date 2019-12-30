@@ -2,18 +2,21 @@
   <b-row class="home">
     <b-col class="text-center">
       <h1>Welcome</h1>
-      <icon
-        name="spinner"
-        pulse
-        scale="2"
-        class="mt-2"/>
+      <b-spinner small></b-spinner>
     </b-col>
   </b-row>
 </template>
 
 <script>
+  import {BCol, BRow, BSpinner} from 'bootstrap-vue';
+
   export default {
     name: 'Home',
+    components: {
+      BCol,
+      BRow,
+      BSpinner,
+    },
     mounted() {
       this.$store.dispatch('fetchDeviceType');
       this.$store.dispatch('wifi/fetchStatus')

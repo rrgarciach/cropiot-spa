@@ -2,11 +2,7 @@
   <div id="app">
     <div id="loading" v-if="$store.getters['getBusy']()">
       <div>
-        <icon
-          name="spinner"
-          pulse
-          scale="4"
-          class="mt-2"/>
+        <b-spinner style="width: 3rem; height: 3rem;"></b-spinner>
       </div>
     </div>
     <nav-bar></nav-bar>
@@ -24,11 +20,15 @@
 </template>
 
 <script>
+  import {BJumbotron, BContainer, BSpinner} from 'bootstrap-vue';
   import NavBar from './components/NavBar';
 
   export default {
     name: 'App',
     components: {
+      BJumbotron,
+      BContainer,
+      BSpinner,
       NavBar,
     },
   }
@@ -51,7 +51,7 @@
     background-color: rgba(40, 167, 69, .75);
     width: 100vw;
     height: 100vh;
-    z-index: 100;
+    z-index: 10000;
     div {
       color: white;
       display: table-cell;

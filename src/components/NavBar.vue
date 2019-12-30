@@ -17,9 +17,16 @@
 </template>
 
 <script>
-export default {
-  name: 'NavBar',
-}
+  import {BNavbar, BNavbarNav, BNavItem} from 'bootstrap-vue';
+
+  export default {
+    name: 'NavBar',
+    components: {
+      BNavbar,
+      BNavbarNav,
+      BNavItem,
+    },
+  }
 </script>
 
 <style scoped lang="scss">

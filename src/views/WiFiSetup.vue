@@ -39,8 +39,23 @@
 </template>
 
 <script>
+  import {BCol, BRow, BFormGroup, BInputGroup, BFormInput, BBadge, BButton, BDropdown, BDropdownItem, BListGroup, BListGroupItem} from 'bootstrap-vue';
+
   export default {
     name: 'WiFiSetup',
+    components: {
+      BCol,
+      BRow,
+      BFormGroup,
+      BInputGroup,
+      BFormInput,
+      BBadge,
+      BButton,
+      BDropdown,
+      BDropdownItem,
+      BListGroup,
+      BListGroupItem,
+    },
     data() {
       return {
         networks: [],
