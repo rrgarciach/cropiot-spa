@@ -18,7 +18,7 @@
       BSpinner,
     },
     mounted() {
-      this.$store.dispatch('fetchDeviceType');
+      this.$store.dispatch('device/fetchDeviceType');
       this.$store.dispatch('wifi/fetchStatus')
         .then(() => {
           setTimeout(() => {

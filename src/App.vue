@@ -6,14 +6,14 @@
       </div>
     </div>
     <nav-bar></nav-bar>
-    <b-jumbotron fluid>
-      <b-container class="hidden text-center pt-5">
-        <img src="./assets/logo.png" alt="logo" style="width:160px;height:auto;">
-        <h1 class="display-4">CropIO</h1>
-        <p class="lead">cultivo futuro</p>
-      </b-container>
-    </b-jumbotron>
-    <b-container>
+<!--    <b-jumbotron fluid>-->
+<!--      <b-container class="hidden text-center pt-5">-->
+<!--        <img src="./assets/logo.png" alt="logo" style="width:160px;height:auto;">-->
+<!--        <h1 class="display-4">CropIO</h1>-->
+<!--        <p class="lead">cultivo futuro</p>-->
+<!--      </b-container>-->
+<!--    </b-jumbotron>-->
+    <b-container id="content-view">
       <router-view/>
     </b-container>
   </div>
@@ -58,6 +58,10 @@
       text-align: center;
       vertical-align: middle;
     }
+  }
+
+  #content-view {
+    padding-top: 5em;
   }
 
 </style>
