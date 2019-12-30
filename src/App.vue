@@ -1,15 +1,24 @@
 <template>
   <div id="app">
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container hidden text-center">
-        <img src="./assets/logo.png" alt="logo" style="width:220px;height:auto;">
-        <h1 class="display-4">CropIO</h1>
-        <p class="lead">cultivo futuro</p>
+    <div id="loading" v-if="$store.getters['getBusy']()">
+      <div>
+        <icon
+          name="spinner"
+          pulse
+          scale="4"
+          class="mt-2"/>
       </div>
     </div>
-    <div class="container">
+    <b-jumbotron fluid>
+      <b-container class="hidden text-center">
+        <img src="./assets/logo.png" alt="logo" style="width:200px;height:auto;">
+        <h1 class="display-4">CropIO</h1>
+        <p class="lead">cultivo futuro</p>
+      </b-container>
+    </b-jumbotron>
+    <b-container>
       <router-view/>
-    </div>
+    </b-container>
   </div>
 </template>
 
@@ -23,4 +32,20 @@
     /*text-align: center;*/
     /*color: #2c3e50;*/
   }
+
+  #loading {
+    position: absolute;
+    display: table;
+    background-color: rgba(40, 167, 69, .75);
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    div {
+      color: white;
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+
 </style>

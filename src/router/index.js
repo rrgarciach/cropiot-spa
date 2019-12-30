@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
   },
   {
     path: '/wifi-setup',
@@ -16,7 +16,17 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/WiFiSetup.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/WiFiSetup.vue'),
+  },
+  {
+    path: '/mqtt-setup',
+    name: 'mqtt-setup',
+    component: () => import('../views/MQTTSetup.vue'),
+  },
+  {
+    path: '/device-setup',
+    name: 'device-setup',
+    component: () => import('../views/DeviceSetup.vue'),
   },
   {
     path: '*',

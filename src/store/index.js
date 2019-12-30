@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import {API} from '@/constants';
 import wifiModule from './wifi';
+import mqttModule from './mqtt';
 
 Vue.use(Vuex);
 
@@ -21,8 +22,11 @@ export default new Vuex.Store({
     isBusy: false,
   },
   mutations: {
+    setBusy(state, isBusy) {
+      state.isBusy = isBusy;
+    },
     setName(state, name) {
-        state.device.name = name || 'Device';
+      state.device.name = name || 'Device';
     },
     setType(state, type) {
       const ucKey = String(type).toUpperCase();
@@ -32,19 +36,23 @@ export default new Vuex.Store({
         state.device.type = DEVICE_TYPES.DEFAULT;
     },
   },
+  getters: {
+    getBusy: state => () => state.isBusy,
+  },
   actions: {
-    fetchDeviceType({state, mutations}) {
+    fetchDeviceType({state, commit}) {
       return axios.get(API.SETTINGS.DEVICE)
         .then((response = {}) => {
-          const {name, type} = (response.data) ? response.data.deviceType : null;
+          const {name, type} = response.data;
+          if (name) commit('setName', name);
+          if (type) commit('setType', type);
           state.isBusy = false;
-          mutations.setName(state, name);
-          mutations.setType(state, type);
           return Promise.resolve(response);
         });
     },
   },
   modules: {
     wifi: wifiModule,
+    mqtt: mqttModule,
   }
 })
