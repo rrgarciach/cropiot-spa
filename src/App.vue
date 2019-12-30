@@ -9,9 +9,10 @@
           class="mt-2"/>
       </div>
     </div>
+    <nav-bar></nav-bar>
     <b-jumbotron fluid>
-      <b-container class="hidden text-center">
-        <img src="./assets/logo.png" alt="logo" style="width:200px;height:auto;">
+      <b-container class="hidden text-center pt-5">
+        <img src="./assets/logo.png" alt="logo" style="width:160px;height:auto;">
         <h1 class="display-4">CropIO</h1>
         <p class="lead">cultivo futuro</p>
       </b-container>
@@ -21,6 +22,17 @@
     </b-container>
   </div>
 </template>
+
+<script>
+  import NavBar from './components/NavBar';
+
+  export default {
+    name: 'App',
+    components: {
+      NavBar,
+    },
+  }
+</script>
 
 <style lang="scss">
   @import '~bootstrap/scss/bootstrap.scss';
