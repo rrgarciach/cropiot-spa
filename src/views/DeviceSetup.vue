@@ -24,7 +24,7 @@
             <b-form-input v-model="name" placeholder="Device name"/>
           </b-input-group>
         </b-form-group>
-        <b-button block variant="success" @click="onSubmit" class="mb-3">Connect</b-button>
+        <b-button block variant="success" @click="onSubmit" class="mb-3">Submit</b-button>
       </form>
 
     </b-col>
