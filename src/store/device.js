@@ -6,12 +6,16 @@ export default {
   namespaced: true,
   state: {
     name: 'Device',
+    pass: '',
     type: DEVICE_TYPES.DEFAULT,
     data: {},
   },
   mutations: {
     setName(state, name) {
       state.name = name || 'Device';
+    },
+    setPass(state, pass) {
+      state.pass = pass || '';
     },
     setType(state, type) {
       const ucKey = String(type).toUpperCase();
@@ -26,6 +30,7 @@ export default {
   },
   getters: {
     getType: state => () => state.type,
+    getName: state => () => state.name,
     getData: state => () => state.data,
   },
   actions: {
@@ -33,8 +38,8 @@ export default {
       rootState.isBusy = true;
       return axios.get(API.SETTINGS.DEVICE)
         .then((response = {}) => {
-          const {name, type} = response.data;
-          if (name) commit('setName', name);
+          const {deviceName, type} = response.data;
+          if (deviceName) commit('setName', deviceName);
           if (type) commit('setType', type);
           state.isBusy = false;
           return Promise.resolve(response);
@@ -50,6 +55,15 @@ export default {
           if (data) commit('setData', data);
           state.isBusy = false;
           return Promise.resolve(response);
+        });
+    },
+    submitDevice({state, rootState}) {
+      rootState.isBusy = true;
+      let bodyFormData = new FormData();
+      bodyFormData.set('deviceName', state.name);
+      return axios.post(API.SETTINGS.DEVICE, bodyFormData)
+        .finally(() => {
+          rootState.isBusy = false;
         });
     },
   },

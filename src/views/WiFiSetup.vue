@@ -18,7 +18,7 @@
         </b-form-group>
         <b-form-group>
           <label for="pass">Password:</label>
-          <b-input-group id="pass" append="show">
+          <b-input-group id="pass">
             <b-form-input type="password" v-model="pass" placeholder="Network password"/>
           </b-input-group>
         </b-form-group>
@@ -64,9 +64,9 @@
         connected: false,
       }
     },
-    beforeMount() {
-      this.$store.dispatch('wifi/fetchStatus');
-      this.$store.dispatch('wifi/fetchScan');
+    async beforeMount() {
+      await this.$store.dispatch('wifi/fetchStatus');
+      this.fetchScan();
     },
     mounted() {
       this.$data.networks = this.$store.getters['wifi/getNetworks']();
@@ -81,6 +81,7 @@
         }),
         this.$store.watch(this.$store.getters['wifi/getStatus'], newVal => {
           this.$data.connected = newVal;
+          this.fetchScan();
         }),
       ];
     },
@@ -90,6 +91,10 @@
     methods: {
       onSsidSelect(ssid) {
         this.$data.ssid = ssid;
+      },
+      fetchScan() {
+        if (!this.$data.connected)
+          this.$store.dispatch('wifi/fetchScan');
       },
       onSubmit() {
         if (!this.$data.ssid) alert('Invalid SSID');
