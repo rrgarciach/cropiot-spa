@@ -8,6 +8,7 @@ export default {
     networks: [],
     ssid: '',
     pass: '',
+    ip: '',
     connected: false,
   },
   mutations: {
@@ -22,6 +23,7 @@ export default {
     getNetworks: state => () => state.networks,
     getStatus: state => () => state.connected,
     getSsid: state => () => state.ssid,
+    getIp: state => () => state.ip,
   },
   actions: {
     fetchStatus({state, rootState}) {
@@ -31,6 +33,7 @@ export default {
           const {data} = response;
           state.ssid = data.ssid;
           state.connected = data.connected;
+          state.ip = data.ip;
         })
         .finally(() => {
           rootState.isBusy = false;

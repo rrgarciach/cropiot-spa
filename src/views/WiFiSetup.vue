@@ -30,6 +30,10 @@
             <small>SSID:</small>
             <h5>{{ ssid }}</h5>
           </b-list-group-item>
+          <b-list-group-item>
+            <small>Local IP address:</small>
+            <h5>{{ ip }}</h5>
+          </b-list-group-item>
         </b-list-group>
         <br>
         <b-button block variant="warning" @click="disconnect">Disconnect</b-button>
@@ -61,6 +65,7 @@
         networks: [],
         ssid: '',
         pass: '',
+        ip: '',
         connected: false,
       }
     },
@@ -71,6 +76,7 @@
     mounted() {
       this.$data.networks = this.$store.getters['wifi/getNetworks']();
       this.$data.ssid = this.$store.getters['wifi/getSsid']();
+      this.$data.ip = this.$store.getters['wifi/getIp']();
       this.$data.connected = this.$store.getters['wifi/getStatus']();
       this.watchers = [
         this.$store.watch(this.$store.getters['wifi/getNetworks'], newVal => {
@@ -78,6 +84,9 @@
         }),
         this.$store.watch(this.$store.getters['wifi/getSsid'], newVal => {
           this.$data.ssid = newVal;
+        }),
+        this.$store.watch(this.$store.getters['wifi/getIp'], newVal => {
+          this.$data.ip = newVal;
         }),
         this.$store.watch(this.$store.getters['wifi/getStatus'], newVal => {
           this.$data.connected = newVal;
